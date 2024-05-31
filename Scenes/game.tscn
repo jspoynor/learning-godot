@@ -422,6 +422,21 @@ sources/0 = SubResource("TileSetAtlasSource_acm6t")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ltv2j"]
 distance = -1.0
 
+[sub_resource type="Animation" id="Animation_eg0tx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(562, 78)]
+}
+
 [sub_resource type="Animation" id="Animation_y1vj2"]
 resource_name = "move"
 length = 2.0
@@ -439,21 +454,6 @@ tracks/0/keys = {
 "values": [Vector2(562, 78), Vector2(656.305, 78)]
 }
 
-[sub_resource type="Animation" id="Animation_eg0tx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(562, 78)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hpobb"]
 _data = {
 "RESET": SubResource("Animation_eg0tx"),
@@ -467,14 +467,15 @@ unique_name_in_owner = true
 script = ExtResource("1_c75pv")
 
 [node name="Player" parent="." instance=ExtResource("1_qiqmi")]
-position = Vector2(0, 5)
+position = Vector2(0, 16)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -5)
 zoom = Vector2(3.5, 3.5)
 limit_bottom = 135
+limit_smoothed = true
 
-[node name="Label" type="Label" parent="Player/Camera2D"]
+[node name="score_text" type="Label" parent="Player/Camera2D"]
 offset_left = 131.0
 offset_top = -86.0
 offset_right = 167.0
